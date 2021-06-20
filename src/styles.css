@@ -6,8 +6,13 @@ body {
   min-height: 100vh;
 }
 
+.code {
+  padding: 120px;
+
+  font-size: 15px;
+}
 .container {
-  margin: 30px auto;
+  margin: 30px auto 15px;
   padding: 0px;
   padding-bottom: 30px;
   display: flex;
