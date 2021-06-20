@@ -52,7 +52,7 @@ getDate();
 //Search Engine
 
 let apiKey = "bffff5f987eb41b4140733e443ddec2a";
-let apiEndPoint = "http://api.openweathermap.org/data/2.5/weather?";
+let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather?";
 let units = "metric";
 let latLonUrl = "";
 let cityurl = "";
