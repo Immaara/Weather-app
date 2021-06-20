@@ -56,6 +56,7 @@ let apiEndPoint = "https://api.openweathermap.org/data/2.5/weather?";
 let units = "metric";
 let latLonUrl = "";
 let cityurl = "";
+let temperature = 0;
 
 // Current Position
 navigator.geolocation.getCurrentPosition(coordinates);
@@ -87,7 +88,7 @@ function showCurrentCity(response) {
 }
 
 function showCurrentWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
   degrees.innerHTML = `${temperature}º`;
 }
@@ -131,7 +132,7 @@ function showCity(response) {
 }
 
 function showCityTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
   degrees.innerHTML = `${temperature}º`;
 }
