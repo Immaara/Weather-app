@@ -58,6 +58,8 @@ let latLonUrl = "";
 let cityurl = "";
 
 // Current Position
+navigator.geolocation.getCurrentPosition(coordinates);
+
 function searchPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(coordinates);
@@ -82,13 +84,12 @@ function showCurrentCity(response) {
   let currentCity = response.data.name;
   let city = document.getElementById("city");
   city.innerHTML = currentCity;
-  console.log(response);
 }
 
 function showCurrentWeather(response) {
-  let currentTemperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
-  degrees.innerHTML = `${currentTemperature}º`;
+  degrees.innerHTML = `${temperature}º`;
 }
 
 function showWind(response) {
@@ -130,9 +131,9 @@ function showCity(response) {
 }
 
 function showCityTemperature(response) {
-  let cityTemperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
-  degrees.innerHTML = `${cityTemperature}º`;
+  degrees.innerHTML = `${temperature}º`;
 }
 
 function showCityWind(response) {
@@ -150,9 +151,8 @@ function showCityHumidity(response) {
 //Degrees
 function changeFarenheit(event) {
   event.preventDefault();
-  let temperatureFarenheit = document.querySelector("#degrees");
-  let temperature = temperatureFarenheit.innerHTML;
-  temperatureFarenheit.innerHTML = `${Math.round((temperature * 9) / 5 + 32)}º`;
+  let degrees = document.querySelector("#degrees");
+  degrees.innerHTML = `${Math.round((temperature * 9) / 5 + 32)}º`;
 }
 
 let farenheit = document.querySelector("#farenheit");
@@ -160,9 +160,8 @@ farenheit.addEventListener("click", changeFarenheit);
 
 function changeCelcius(event) {
   event.preventDefault();
-  let celcius = 16;
-  let temperature = document.querySelector("#degrees");
-  temperature.innerHTML = celcius;
+  let degrees = document.querySelector("#degrees");
+  degrees.innerHTML = `${temperature}º`;
 }
 
 let celcius = document.querySelector("#celcius");
