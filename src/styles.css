@@ -65,16 +65,13 @@ p {
 }
 
 #message {
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
-  font-style: italic;
+  font-style: normal;
   margin-top: 15px;
   margin-bottom: 20px;
 }
-#message-weather {
-  font-size: 20px;
-  font-style: normal;
-}
+
 ul {
   list-style: none;
   padding: 0px;

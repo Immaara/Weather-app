@@ -2,13 +2,13 @@ function getDate() {
   let dateSrc = new Date();
 
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
   let daysrc = days[dateSrc.getDay()];
 
@@ -74,20 +74,21 @@ function coordinates(position) {
   latLonUrl = `lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
 
   axios.get(`${apiEndPoint}${latLonUrl}`).then((response) => {
-    showCurrentCity(response);
-    showCurrentWeather(response);
+    showCity(response);
+    showTemperature(response);
     showHumidity(response);
     showWind(response);
+    showDescription(response);
   });
 }
 
-function showCurrentCity(response) {
+function showCity(response) {
   let currentCity = response.data.name;
   let city = document.getElementById("city");
   city.innerHTML = currentCity;
 }
 
-function showCurrentWeather(response) {
+function showTemperature(response) {
   temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
   degrees.innerHTML = `${temperature}º`;
@@ -105,6 +106,12 @@ function showHumidity(response) {
   humidity.innerHTML = `${currentHumidity}%`;
 }
 
+function showDescription(response) {
+  let message = response.data.weather[0].description;
+  let description = document.querySelector("#message");
+  description.innerHTML = message.charAt(0).toUpperCase() + message.slice(1);
+}
+
 //NEW CITY
 
 document.querySelector("#citysearch").addEventListener("submit", newcity);
@@ -119,34 +126,11 @@ function getcityinfo() {
   cityurl = `${apiEndPoint}q=${newcity}&units=${units}&appid=${apiKey}`;
   axios.get(cityurl).then((response) => {
     showCity(response);
-    showCityTemperature(response);
-    showCityWind(response);
-    showCityHumidity(response);
+    showTemperature(response);
+    showWind(response);
+    showHumidity(response);
+    showDescription(response);
   });
-}
-
-function showCity(response) {
-  let city = document.getElementById("city");
-  let newcity = response.data.name;
-  city.innerHTML = newcity;
-}
-
-function showCityTemperature(response) {
-  temperature = Math.round(response.data.main.temp);
-  let degrees = document.getElementById("degrees");
-  degrees.innerHTML = `${temperature}º`;
-}
-
-function showCityWind(response) {
-  let cityWind = Math.round(response.data.wind.speed);
-  let wind = document.getElementById("wind");
-  wind.innerHTML = `${cityWind}km/h`;
-}
-
-function showCityHumidity(response) {
-  let cityHumidity = Math.round(response.data.main.humidity);
-  let humidity = document.getElementById("humidity");
-  humidity.innerHTML = `${cityHumidity}%`;
 }
 
 //Degrees
