@@ -1,0 +1,113 @@
+body {
+  font-family: Quicksand;
+  background-image: url("img/backgroundimg.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+
+.container {
+  margin: 30px auto;
+  padding: 0px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 40px;
+  max-width: 600px;
+  min-width: 400px;
+  min-height: 100%;
+}
+
+h1 {
+  padding: 20px 0px;
+  text-align: center;
+  font-size: 50px;
+  margin: 0 auto;
+}
+
+#day {
+  font-size: 35px;
+  padding: 15px 100px 0px;
+}
+
+#date,
+#hours {
+  font-size: 20px;
+  padding: 0px 100px;
+  min-width: 300px;
+  margin: 0 auto;
+  border: transparent;
+}
+
+p {
+  font-size: 20px;
+  padding: 0px 100px;
+
+  margin: 0 auto;
+  border: transparent;
+}
+
+#degrees {
+  font-size: 70px;
+  text-align: center;
+  padding-right: 70px;
+  padding-top: 0px;
+}
+
+#changeDegree {
+  font-size: 25px;
+  text-align: center;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 30px;
+}
+
+#message {
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+#message-weather {
+  font-size: 20px;
+  font-style: normal;
+}
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px auto;
+  text-align: center;
+}
+li {
+  padding: 10px;
+  font-size: 20px;
+}
+
+#week {
+  margin: 0px;
+  padding: 0px, 50px;
+  min-width: 100px;
+}
+
+form {
+  margin: 0px auto;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+input,
+button {
+  width: 400px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  line-height: 40px;
+  border-radius: 30px;
+  border: solid grey;
+  text-align: center;
+}
+
+button {
+  margin: 0 auto;
+}
