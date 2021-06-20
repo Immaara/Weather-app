@@ -7,9 +7,9 @@ body {
 }
 
 .code {
-  padding: 120px;
-
   font-size: 15px;
+  text-align: center;
+  padding-top: 10px;
 }
 .container {
   margin: 30px auto 15px;
