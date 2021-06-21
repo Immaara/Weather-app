@@ -79,6 +79,7 @@ function coordinates(position) {
     showHumidity(response);
     showWind(response);
     showDescription(response);
+    emoji(response);
   });
 }
 
@@ -104,12 +105,29 @@ function showHumidity(response) {
   let currentHumidity = Math.round(response.data.main.humidity);
   let humidity = document.getElementById("humidity");
   humidity.innerHTML = `${currentHumidity}%`;
+  console.log(response.data);
 }
 
 function showDescription(response) {
   let message = response.data.weather[0].description;
-  let description = document.querySelector("#message");
-  description.innerHTML = message.charAt(0).toUpperCase() + message.slice(1);
+  let description = document.getElementById("message");
+  description.innerHTML = message + " " + emoji(response.data.weather[0].main);
+}
+
+function emoji(message) {
+  if (message == "Clear") {
+    return `☀️`;
+  } else if (message == "Clouds") {
+    return `⛅️`;
+  } else if (message == "Drizzle" || message == "Rain") {
+    return `🌧`;
+  } else if (message == "Thunderstorm") {
+    return `⛈`;
+  } else if (message == "Snow") {
+    return `❄️`;
+  } else {
+    return `☁`;
+  }
 }
 
 //NEW CITY
@@ -130,6 +148,7 @@ function getcityinfo() {
     showWind(response);
     showHumidity(response);
     showDescription(response);
+    emoji(response);
   });
 }
 
