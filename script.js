@@ -80,6 +80,7 @@ function coordinates(position) {
     showWind(response);
     showDescription(response);
     emoji(response);
+    background(response.data.weather[0].main);
   });
 }
 
@@ -130,6 +131,28 @@ function emoji(message) {
   }
 }
 
+function background(description) {
+  if (description == "Clear") {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/247/original/clouds.gif?1624307829')";
+  } else if (description == "Clouds") {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/249/original/clouds2.gif?1624311495')";
+  } else if (description == "Drizzle" || description == "Rain") {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/230/original/rain.gif?1624288110')";
+  } else if (description == "Thunderstorm") {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/251/original/thunder.gif?1624312147')";
+  } else if (description == "Snow") {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/253/original/snow.gif?1624312319')";
+  } else {
+    document.body.style.backgroundImage =
+      "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/011/250/original/fog.gif?1624312053')";
+  }
+}
+
 //NEW CITY
 
 document.querySelector("#citysearch").addEventListener("submit", newcity);
@@ -149,6 +172,7 @@ function getcityinfo() {
     showHumidity(response);
     showDescription(response);
     emoji(response);
+    background(response.data.weather[0].main);
   });
 }
 
