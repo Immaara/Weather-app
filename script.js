@@ -81,6 +81,7 @@ function coordinates(position) {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
+    displayForecast();
   });
 }
 
@@ -94,18 +95,19 @@ function showTemperature(response) {
   temperature = Math.round(response.data.main.temp);
   let degrees = document.getElementById("degrees");
   degrees.innerHTML = `${temperature}º`;
+  document.getElementById("changeDegree").style.display = "block";
 }
 
 function showWind(response) {
   let currentWind = Math.round(response.data.wind.speed);
   let wind = document.getElementById("wind");
-  wind.innerHTML = `${currentWind}km/h`;
+  wind.innerHTML = `  💨 ${currentWind}km/h`;
 }
 
 function showHumidity(response) {
   let currentHumidity = Math.round(response.data.main.humidity);
   let humidity = document.getElementById("humidity");
-  humidity.innerHTML = `${currentHumidity}%`;
+  humidity.innerHTML = `💧${currentHumidity}%  `;
   console.log(response.data);
 }
 
@@ -173,6 +175,7 @@ function getcityinfo() {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
+    displayForecast();
   });
 }
 
@@ -188,9 +191,30 @@ farenheit.addEventListener("click", changeFarenheit);
 
 function changeCelcius(event) {
   event.preventDefault();
-  let degrees = document.querySelector("#degrees");
+  let degrees = document.getElementById("degrees");
   degrees.innerHTML = `${temperature}º`;
 }
 
-let celcius = document.querySelector("#celcius");
+let celcius = document.getElementById("celcius");
 celcius.addEventListener("click", changeCelcius);
+
+// FORECAST
+
+function displayForecast() {
+  let forecast = document.getElementById("forecast");
+  let forecastHTML = "";
+  let days = ["Wednesday", "Thursday", "Friday"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+<ul class="list-group list-group-horizontal" id="week" >
+<li class="list-group-item"> ${day}</li>
+<li class="list-group-item"> 18º</li>
+<li class="list-group-item"> 🌤</li>
+</ul>`;
+  });
+
+  forecast.innerHTML = forecastHTML;
+}
