@@ -89,15 +89,27 @@ li {
 }
 
 #week,
+.list.group {
+  margin: 0px auto;
+  padding-right: 80px;
+  padding-left: 80px;
+}
 .list-group-item {
   margin: 0px auto;
-  padding: 0px, 50px;
   min-width: 100px;
   border: transparent;
   background-color: transparent;
   color: white;
-  text-align: center;
   max-width: 300px;
+  text-align: justify;
+}
+
+#forecastemoji {
+  text-align: center;
+}
+
+#forecastmax {
+  color: rgb(197, 197, 197);
 }
 
 form {

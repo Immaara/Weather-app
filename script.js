@@ -81,7 +81,6 @@ function coordinates(position) {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
-    displayForecast(response);
     forecastApi(response);
   });
 }
@@ -175,7 +174,7 @@ function getcityinfo() {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
-    displayForecast(response);
+    forecastApi(response);
     console.log(response);
   });
 }
@@ -201,6 +200,20 @@ celcius.addEventListener("click", changeCelcius);
 
 // FORECAST
 
+function forecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[date.getDay()];
+}
+
 function forecastApi(response) {
   let longitude = response.data.coord.lon;
   let latitude = response.data.coord.lat;
@@ -210,20 +223,31 @@ function forecastApi(response) {
 }
 
 function displayForecast(response) {
+  let forecastdata = response.data.daily;
   console.log(response.data.daily);
   let forecast = document.getElementById("forecast");
   let forecastHTML = "";
-  let days = ["Wednesday", "Thursday", "Friday"];
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecastdata.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `
 <ul class="list-group list-group-horizontal" id="week" >
-<li class="list-group-item"> ${day}</li>
-<li class="list-group-item"> 18º</li>
-<li class="list-group-item"> 🌤</li>
+<li class="list-group-item" id="forecastday"> ${forecastDate(
+          forecastDay.dt
+        )}</li>
+<li class="list-group-item" id="forecastemoji"> ${emoji(
+          forecastDay.weather[0].main
+        )} </li>
+<li class="list-group-item" id="forecastmin"> ${
+          Math.round(forecastDay.temp.max) + "º"
+        }</li>
+<li class="list-group-item" id="forecastmax"> ${
+          Math.round(forecastDay.temp.min) + "º"
+        }</li>
 </ul>`;
+    }
   });
 
   forecast.innerHTML = forecastHTML;
