@@ -81,7 +81,8 @@ function coordinates(position) {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
-    displayForecast();
+    displayForecast(response);
+    forecastApi(response);
   });
 }
 
@@ -108,7 +109,6 @@ function showHumidity(response) {
   let currentHumidity = Math.round(response.data.main.humidity);
   let humidity = document.getElementById("humidity");
   humidity.innerHTML = `💧${currentHumidity}%  `;
-  console.log(response.data);
 }
 
 function showDescription(response) {
@@ -175,7 +175,8 @@ function getcityinfo() {
     showDescription(response);
     emoji(response);
     background(response.data.weather[0].main);
-    displayForecast();
+    displayForecast(response);
+    console.log(response);
   });
 }
 
@@ -200,7 +201,16 @@ celcius.addEventListener("click", changeCelcius);
 
 // FORECAST
 
-function displayForecast() {
+function forecastApi(response) {
+  let longitude = response.data.coord.lon;
+  let latitude = response.data.coord.lat;
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+  console.log(url);
+  axios.get(url).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.getElementById("forecast");
   let forecastHTML = "";
   let days = ["Wednesday", "Thursday", "Friday"];
