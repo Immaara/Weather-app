@@ -152,10 +152,10 @@ function showForecast() {
       forecastHTML +
       `
 <ul class="list-group list-group-horizontal" id="week" >
-<li class="list-group-item" id="forecastday"> ${forecastDate(forecastDay.dt)}</li>
-<li class="list-group-item" id="forecastemoji"> ${getWeatherIcon(forecastDay.weather[0].main)} </li>
-<li class="list-group-item" id="forecastmin"> ${convertIfNeeded(forecastDay.temp.max) + "º"}</li>
-<li class="list-group-item" id="forecastmax"> ${convertIfNeeded(forecastDay.temp.min) + "º"}</li>
+<li class="list-group-item flex-fill" id="forecastday"> ${forecastDate(forecastDay.dt)}</li>
+<li class="list-group-item flex-fill" id="forecastemoji"> ${getWeatherIcon(forecastDay.weather[0].main)} </li>
+<li class="list-group-item flex-fill" id="forecastmin"> ${convertIfNeeded(forecastDay.temp.max) + "º"}</li>
+<li class="list-group-item flex-fill" id="forecastmax"> ${convertIfNeeded(forecastDay.temp.min) + "º"}</li>
 </ul>`;
   });
 
